@@ -1,0 +1,39 @@
+{
+  "file_path": "/tmp/scan_workspace/Aur0ra__test/test.py",
+  "file_name": "test.py",
+  "file_size": 42,
+  "flagged": true,
+  "worst_severity": "low",
+  "flagged_by": [
+    "bandit"
+  ],
+  "skipped": null,
+  "verdicts": [
+    {
+      "scanner": "bandit",
+      "flagged": true,
+      "severity": "low",
+      "details": {
+        "confidence": "high",
+        "file": "test.py",
+        "message": "Starting a process with a shell: Seems safe, but may be changed in the future, consider rewriting without shell",
+        "line": 3
+      },
+      "error": null,
+      "duration": 0.39
+    },
+    {
+      "scanner": "bandit",
+      "flagged": true,
+      "severity": "low",
+      "details": {
+        "confidence": "high",
+        "file": "test.py",
+        "message": "Starting a process with a partial executable path",
+        "line": 3
+      },
+      "error": null,
+      "duration": 0.39
+    }
+  ]
+}
