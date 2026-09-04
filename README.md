@@ -2,12 +2,12 @@
 
 The code and scanner outputs that enabled us to perform the triage are provided here.
 
-**Careful:** everything under `flagged/` is real malicious code pulled off the Hub -
-load-time RCE, environment exfiltration, a remote second stage. Read it, don't run it.
+**Careful:** everything under `flagged/` is real malicious code pulled off the HF Hub -
+load-time RCE, environment exfiltration, a remote second stage. Read it, be careful to run only in a contained environment.
 
 ## What's here
 
-Fourteen repos, split by type:
+Thirteeen repos, split by type:
 
 ```
 Model/      5 repos
@@ -15,9 +15,6 @@ Dataset/    8 repos
    audit/      one JSON per repo - the whole run
    flagged/    the files that tripped something, each with its verdicts
 ```
-
-All fourteen came back `malicious`. That's the point - this is the flagged set, not a
-random sample.
 
 ## Reading the JSON
 
@@ -34,6 +31,5 @@ absence is what most of this evidence is actually about.
 
 ## Things worth knowing before you dig in
 
-Only flagged files were staged, so these aren't full repo clones. The paths are real; the
-gaps are files that came back clean.
+Only flagged files were staged, so these aren't full repo clones.
 
