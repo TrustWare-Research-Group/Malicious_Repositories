@@ -1,35 +1,31 @@
 # Scanner output
 
-The code and scanner outputs that enabled us to perform the triage are provided here.
+The code and scanner outputs that enabled us to perform the triage and analysis are provided here.
 
-**Careful:** everything under `flagged/` is real malicious code pulled off the HF Hub -
+**Note:** everything under `flagged/` is real malicious code pulled off the HF Hub -
 load-time RCE, environment exfiltration, a remote second stage. Read it, be careful to run only in a contained environment.
 
-## What's here
-
-Thirteeen repos, split by type:
+## What are these?
+Paritioned are the thirteeen (13) HF repositories, split by type:
 
 ```
 Model/      5 repos
 Dataset/    8 repos
-   audit/      one JSON per repo - the whole run
-   flagged/    the files that tripped something, each with its verdicts
+   audit/      one JSON per repo - the whole SOTA pipeleine run
+   flagged/    the files that the SOTA scanner detected traces of something, each with its verdicts
 ```
 
-## Reading the JSON
+## Reading the Scanner Results/JSON
 
-`audit/<owner>__<repo>__<timestamp>.json` is the repo-level result: how many files were
-scanned, which ones flagged, which scanners fired, plus a `file_results` entry per file.
+`audit/<owner>__<HFrepo>__<timestamp>.json` is the repo-level result. It includes how many files were filtered and
+scanned, which ones flagged, which scanners detected anything, and a `file_results` entry per file.
 
-Sitting next to each flagged file is a `<name>.verdicts.json` - the same thing at file
-level. `flagged_by` says which scanners hit it, and each verdict carries the rule id, the
+Sitting next to each flagged file is a `<name>.verdicts.json`, each file flagged  have  a verdict file for file-level information. `flagged_by` says which scanners flagged it, and each verdict carries the rule id, the
 message, the line number, and the snippet that matched.
 
 Six scanners ran over every file: opengrep, bandit, trivy, pysentry, pip_audit,
-modelaudit. So a scanner missing from `flagged_by` **ran and found nothing** - that
-absence is what most of this evidence is actually about.
+modelaudit. So a scanner missing from `flagged_by` **ran and found nothing**
 
-## Things worth knowing before you dig in
+## Additional Context:
 
-Only flagged files were staged, so these aren't full repo clones.
-
+Only the flagged files were staged, so these aren't full repo clones. This is the 13 repositories specifically with the files that the scanners flagged for suspected malicious payloads or instructions found in a python script file.
